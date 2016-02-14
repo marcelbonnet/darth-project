@@ -1,0 +1,5 @@
+cli-config.php
+   $isDevMode = true;	#mudar para false em produção
+
+src/dao/DAO.pho
+   $isDevMode = true;	#mudar para false em produção

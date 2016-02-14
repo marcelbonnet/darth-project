@@ -1,0 +1,20 @@
+{
+    "require": {
+        "slim/slim": "2.6",
+        "psr/log": "1.0",
+        "slim/views": "0.1.3",
+        "twig/twig": "1.18",
+        "doctrine/orm" : "2.5",
+        "beberlei/DoctrineExtensions": "^1.0"
+    }
+   ,"autoload": {
+        "psr-4": {
+	    "Darth\\Core\\": "src",
+	    "Darth\\Core\\DAO\\": "src/dao",
+	    "Darth\\Core\\Modules\\Fiscalizacao": "src/mod/fiscalizacao",
+	    "Darth\\Core\\Modules\\Fiscalizacao\\DAO": "src/mod/fiscalizacao/dao",
+	    "Darth\\Core\\Annotations\\": "src/annotations",
+	    "Darth\\Core\\Cmd\\": "src/cmd"
+        }
+    }
+}

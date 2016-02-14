@@ -1,0 +1,18 @@
+bootstrap dos módulos:
+   como carregar os DAO dos módulos? talvez chamar um $em e carregar em runtime?
+   onde colocar os dao dos módulos? 
+
+
+BOOTSTRAP DE MOD:
+
+* os dois arquivos poderiam ser apenas um, mudando o retorno ?
+cli-config.php  :   deveria pegar de uma tabela
+src/dao/DAO.php :   deveria pegar de uma tabela
+
+composer.json   :   precisa ser alterado quando um mod for carregado/ativado
+
+
+============================
+Doctrine Inheritance Mapping
+
+http://doctrine-orm.readthedocs.org/projects/doctrine-orm/en/latest/reference/inheritance-mapping.html

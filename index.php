@@ -90,10 +90,9 @@ $app->hook('slim.before', function() use ($app, $loader) {
     # são reservadas para módulos por causa do bootstrap aqui embutido:
     #
     #preg_match("@^/Modules/.+$@", $app->request->getPathInfo() , $matches);
-    preg_match("@^/mod/.+$@", $app->request->getPathInfo() , $matches);
+    preg_match("@^/modules/.+$@", $app->request->getPathInfo() , $matches);
     if($matches){   #print: [0] => /mod/fiscalizacao
-        #$nomeModulo = explode("/",$matches[0])[2];
-        #Darth\Core\Modules\$nomeModulo\Xxxxxxx(); #funciona?
+        $nomeModulo = explode("/",$matches[0])[2];
         
         # TESTE 1
         #require_once __DIR__ . $matches[0] . "/ControllerBase.php"; #dá erro nesse include, classe dentro de método hook!
@@ -103,9 +102,11 @@ $app->hook('slim.before', function() use ($app, $loader) {
 
         # TESTE 3
         $loader->addPsr4("Darth\\Modules\\Fiscalizacao\\", __DIR__ . "/mod/Fiscalizacao");  #funcionou
+        #$loader->addPsr4("Darth\\Modules\\". $nomeModulo ."\\", __DIR__ . "/mod/Fiscalizacao");
         $ctrl = new Darth\Modules\Fiscalizacao\ControllerBase();
-        
+        #$app->render("home.html", array("teste" => $nomeModulo ) );
     }
+    
 });
 
 //Compartilha a instância para os módulos

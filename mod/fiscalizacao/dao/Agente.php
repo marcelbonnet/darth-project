@@ -2,7 +2,7 @@
 #namespace Darth\Core\Modules\Fiscalizacao\dao;
 namespace Darth\Modules\Fiscalizacao\dao;
 
-use Darth\Core\dao\PessoaBase as PessoaBase;
+#use Darth\Core\dao\PessoaBase as PessoaBase;
 
 /**
  * Agente poderia herdar de PessoaRJU, PessoaTerceirizada e estes de PessoaBase,
@@ -11,13 +11,19 @@ use Darth\Core\dao\PessoaBase as PessoaBase;
  * @Entity
  * @Table(name="mod_fiscalizacao__agentes")
  */
-class Agente extends PessoaBase
+class Agente #extends PessoaBase
 {
     /**
     * @Id @GeneratedValue @Column(type="integer")
     * @var integer
     */
     protected $id;
+
+    /**
+    * @OneToOne(targetEntity="Darth\Core\dao\Pessoa",cascade={"persist"})
+    * @JoinColumn(name="fk_pessoa", referencedColumnName="id", nullable=false)
+    */
+    protected $pessoa;
 
     /** @Column(type="integer") */
     protected $credencial;
@@ -62,14 +68,25 @@ class Agente extends PessoaBase
       $this->credencial = $val;
     }
 
+    public function getPessoa()
+    {
+      return $this->pessoa;
+    }
+
+    public function setPessoa($val)
+    {
+      $this->pessoa = $val;
+    }
+
 
    public function __toString()
    {
       return strval("[Class=Agente" 
      .", id=".$this->getId()
-     .", Nome=".$this->getNome()
-     .", Matrícula=".$this->getMatricula()
+     #.", Nome=".$this->getNome()
+     #.", Matrícula=".$this->getMatricula()
      .", Credencial=".$this->getCredencial()
+     .", Pessoa=".$this->getPessoa()
      ."]");
    }
 }

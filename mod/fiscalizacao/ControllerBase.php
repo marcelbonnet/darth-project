@@ -25,9 +25,13 @@ class ControllerBase #extends \Darth\Core\AbstractModulesController
             $app->group('/agente', function () use ($app) {
                $app->get('/', function () use ($app) {
                     $em = \Darth\Core\dao\DAO::em();
-                    $lista = $em->getRepository("Darth\Modules\Fiscalizacao\dao\Agente")
+                    
+                    $pessoas = $em->getRepository("\Darth\Core\dao\Pessoa")
                         ->findBy(array(), array("nome" => "ASC") );
-                    $params = array("agentes" => $lista);
+
+                    $lista = $em->getRepository("Darth\Modules\Fiscalizacao\dao\Agente")
+                        ->findBy(array(), array("id" => "ASC") );
+                    $params = array("pessoas" => $pessoas, "agentes" => $lista);
                     $app->render("agente.html", $params);
                 });
                $app->post('/add', function () use ($app) {
@@ -37,9 +41,14 @@ class ControllerBase #extends \Darth\Core\AbstractModulesController
                     $matricula = $app->request->post("matricula");
                     $credencial = $app->request->post("credencial");
 
+                    //o mapeamento definiu que um Agente DEVE ser uma PESSOA:
+
+                    $pessoa = new \Darth\Core\dao\Pessoa();
+                    $pessoa->setNome($nome);
+                    $pessoa->setMatricula($matricula);
+
                     $agente = new dao\Agente();
-                    $agente->setNome($nome);
-                    $agente->setMatricula($matricula);
+                    $agente->setPessoa($pessoa);
                     $agente->setCredencial($credencial);
 
                     $em->persist($agente);

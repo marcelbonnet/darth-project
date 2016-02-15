@@ -8,6 +8,17 @@
     <button type="submit">Incluir</button>
 </form>
 <hr>
-{% for agente in agentes %}
-    {{agente}}<br>
-{% endfor %}
+
+<fieldset>
+    <legend>Pessoas:</legend>
+    {% for pessoa in pessoas %}
+        {{pessoa}}<br>
+    {% endfor %}
+</fieldset>
+
+<fieldset>
+    <legend>Todo agente é uma pessoa:</legend>
+    {% for agente in agentes %}
+        {{agente}}<br>
+    {% endfor %}
+</fieldset>

@@ -1,6 +1,12 @@
 <?php
-require_once 'vendor/autoload.php';
-
+$loader = require_once 'vendor/autoload.php';
+#       ERRO: $loader->add("Acme\\", __DIR__ . "/mod/Fiscalizacao"); #não surtiu efeito
+#   OK:
+#$loader->addPsr4("Acme\\", __DIR__ . "/mod/Fiscalizacao");  #funcionou
+#$loader->setUseIncludePath(true);  # dispensável
+#print_r($loader->getPrefixesPsr4());   # OK, foi listado
+#$loader->addPsr4("Darth\\Modules\\Fiscalizacao\\", __DIR__ . "/mod/Fiscalizacao");  #funcionou
+#require_once __DIR__ . "/mod/Fiscalizacao/ControllerBase.php" ; #funciona
 /*
  *      FRONT CONTROLLER SIMPLIFICADO DE EXEMPLO
  * Omitidos comentários e configs relativos a sessão, auth/authz,
@@ -78,7 +84,7 @@ $app->group('/projeto', function () use ($app) {
 });
 
 //carrega controllers dos módulos
-$app->hook('slim.before', function() use ($app) {
+$app->hook('slim.before', function() use ($app, $loader) {
     #
     # Rotas /mod/... 
     # são reservadas para módulos por causa do bootstrap aqui embutido:
@@ -90,10 +96,14 @@ $app->hook('slim.before', function() use ($app) {
         #Darth\Core\Modules\$nomeModulo\Xxxxxxx(); #funciona?
         
         # TESTE 1
-        #require __DIR__ . $matches[0] . "/ControllerBase.php"; #dá erro nesse include, classe dentro de método hook!
+        #require_once __DIR__ . $matches[0] . "/ControllerBase.php"; #dá erro nesse include, classe dentro de método hook!
         
         # TESTE 2
-        $ctrl = new \Darth\Core\Modules\Fiscalizacao\ControllerBase();
+        #$ctrl = new \Darth\Core\Modules\Fiscalizacao\ControllerBase(); #class not found, problema no config do composer?
+
+        # TESTE 3
+        $loader->addPsr4("Darth\\Modules\\Fiscalizacao\\", __DIR__ . "/mod/Fiscalizacao");  #funcionou
+        $ctrl = new Darth\Modules\Fiscalizacao\ControllerBase();
         
     }
 });

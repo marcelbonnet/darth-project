@@ -1,5 +1,7 @@
 <?php
 namespace Darth\Core\Modules\Fiscalizacao\dao;
+#namespace Darth\Modules\Fiscalizacao\dao;
+#namespace Acme;
 
 use Darth\Core\DAO\PessoaBase as PessoaBase;
 

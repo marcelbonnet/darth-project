@@ -15,7 +15,7 @@ class DAO
         
         $paths = array( __DIR__,
                 # usar  . DIRECTORY_SEPARATOR . 
-                        __DIR__ . "/../mod/fiscalizacao/dao"
+                        __DIR__ . "/../mod/Fiscalizacao/dao"
                 );    //"./src/dao" , path to Managed Entities
         $isDevMode = true;
 

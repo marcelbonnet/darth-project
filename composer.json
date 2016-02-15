@@ -10,7 +10,7 @@
    ,"autoload": {
         "psr-4": {
 	    "Darth\\Core\\": "src",
-	    "Darth\\Core\\Modules\\Fiscalizacao": "src/mod/fiscalizacao",
+	    "Darth\\Modules\\": "src/mod",
 	    "Darth\\Core\\Annotations\\": "src/annotations",
 	    "Darth\\Core\\Cmd\\": "src/cmd"
         }

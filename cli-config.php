@@ -12,7 +12,7 @@ require_once "vendor/autoload.php";
 
 $paths = array( __DIR__ . "/src/dao/",
         # usar  . DIRECTORY_SEPARATOR . 
-                __DIR__ . "/mod/fiscalizacao/dao"   #no cli-config é direto, no DAO.php tem que usar "../../mod"
+                __DIR__ . "/mod/Fiscalizacao/dao"   #no cli-config é direto, no DAO.php tem que usar "../../mod"
         );    //"./src/dao" , path to Managed Entities
 #$paths = array(__DIR__ . "/src/dao");    // path to Managed Entities
 

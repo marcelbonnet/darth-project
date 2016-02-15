@@ -1,0 +1,12 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<h1>Pessoas</h1>
+
+<form action="{{baseUrl()}}/pessoa/add" method="POST">
+    Nome: <input id="nome" name="nome" placeholder="Nome"><br>
+    Matrícula: <input id="matricula" name="matricula" placeholder="Matrícula"><br>
+    <button type="submit">Incluir</button>
+</form>
+<hr>
+{% for pessoa in pessoas %}
+    {{pessoa}}<br>
+{% endfor %}

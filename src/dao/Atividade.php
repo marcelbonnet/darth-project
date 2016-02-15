@@ -2,6 +2,7 @@
 namespace Darth\Core\dao;
 
 use Doctrine\Common\Collections\ArrayCollection;
+
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\Column;

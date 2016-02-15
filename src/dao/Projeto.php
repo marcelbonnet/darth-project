@@ -1,6 +1,7 @@
 <?php
 namespace Darth\Core\dao;
 
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @Entity 
@@ -82,8 +83,8 @@ class Projeto extends ProjetoBase
       return strval("[Class=Projeto" 
 	 .", id=".$this->getId()
 	 .", Nome=".$this->getNome()
-	 .", Início=".$this->getDataInicio()
-	 .", Fim=".$this->getDataFim()
+	 .", Início=".$this->getDataInicio()->format("d/m/Y")
+	 .", Fim=".$this->getDataFim()->format("d/m/Y")
 	 ."]");
    }
 }

@@ -1,3 +1,9 @@
+httpd.conf
+   incluir no <Directory> entry para o controlador index.php funcionar (se não somente a URI / responderá)
+
+.htaccess
+   Trocar no RewriteBase e RewriteRule o nome do diretório do projeto
+
 cli-config.php
    $isDevMode = true;	#mudar para false em produção
 

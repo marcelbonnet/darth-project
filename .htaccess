@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /darth-project/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(/shotnet2/index\.php/(.+))$ $1?/$2 [L,NC,QSA]
+RewriteRule . /darth-project/index.php [L]

@@ -20,6 +20,33 @@ class ControllerBase #extends \Darth\Core\AbstractModulesController
             $params = array("templates" => $app->view->getTemplatesDirectory() );
             $app->render("home.html", $params );
         });
+
+        $app->group('/modules/fiscalizacao', function () use ($app) {
+            $app->group('/agente', function () use ($app) {
+               $app->get('/', function () use ($app) {
+                    $em = \Darth\Core\dao\DAO::em();
+                    $lista = $em->getRepository("Darth\Modules\Fiscalizacao\dao\Agente")
+                        ->findBy(array(), array("nome" => "ASC") );
+                    $params = array("agentes" => $lista);
+                    $app->render("agente.html", $params);
+                });
+               $app->post('/add', function () use ($app) {
+                    $em = \Darth\Core\dao\DAO::em();
+
+                    $nome = $app->request->post("nome");
+                    $matricula = $app->request->post("matricula");
+                    $credencial = $app->request->post("credencial");
+
+                    $agente = new dao\Agente();
+                    $agente->setNome($nome);
+                    $agente->setMatricula($matricula);
+                    $agente->setCredencial($credencial);
+
+                    $em->persist($agente);
+                    $em->flush();
+                });
+            });
+        });
     }
 
     

@@ -1,0 +1,13 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<h1>Agentes</h1>
+
+<form action="{{baseUrl()}}/modules/fiscalizacao/agente/add" method="POST">
+    <input id="nome" name="nome" placeholder="Nome"><br>
+    <input id="matricula" name="matricula" placeholder="Matrícula"><br>
+    <input id="credencial" name="credencial" placeholder="Credencial"><br>
+    <button type="submit">Incluir</button>
+</form>
+<hr>
+{% for agente in agentes %}
+    {{agente}}<br>
+{% endfor %}

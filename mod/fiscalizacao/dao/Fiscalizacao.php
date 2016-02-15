@@ -1,5 +1,6 @@
 <?php
-namespace Darth\Core\Modules\Fiscalizacao\dao;
+#namespace Darth\Core\Modules\Fiscalizacao\dao;
+namespace Darth\Modules\Fiscalizacao\dao;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping\Entity;
@@ -9,7 +10,7 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\OneToMany;
 
-use Darth\Core\DAO\ProjetoBase as ProjetoBase;
+use Darth\Core\dao\ProjetoBase as ProjetoBase;
 
 /**
  * @Entity 

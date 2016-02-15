@@ -1,9 +1,8 @@
 <?php
-namespace Darth\Core\Modules\Fiscalizacao\dao;
-#namespace Darth\Modules\Fiscalizacao\dao;
-#namespace Acme;
+#namespace Darth\Core\Modules\Fiscalizacao\dao;
+namespace Darth\Modules\Fiscalizacao\dao;
 
-use Darth\Core\DAO\PessoaBase as PessoaBase;
+use Darth\Core\dao\PessoaBase as PessoaBase;
 
 /**
  * Agente poderia herdar de PessoaRJU, PessoaTerceirizada e estes de PessoaBase,

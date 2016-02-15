@@ -1,6 +1,4 @@
-bootstrap dos módulos:
-   como carregar os DAO dos módulos? talvez chamar um $em e carregar em runtime?
-   onde colocar os dao dos módulos? 
+TROCAR dao por DAO no namespace?
 
 
 BOOTSTRAP DE MOD:

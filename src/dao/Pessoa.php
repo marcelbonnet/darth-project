@@ -21,10 +21,14 @@ class Pessoa extends PessoaBase
     */
     protected $id;
 
+    /**
+    * @ManyToOne(targetEntity="Atividade", inversedBy="pessoas")
+    */
+    protected $atividade = null;
+
     public function __construct()
     {
-        $this->children = new ArrayCollection();
-        $this->atividades = new ArrayCollection();
+        
     }
 
     public function getId()
@@ -35,6 +39,16 @@ class Pessoa extends PessoaBase
     public function setId($id)
     {
       $this->id = $id;
+    }
+
+    public function getAtividade()
+    {
+      return $this->atividade;
+    }
+
+    public function setAtividade($val)
+    {
+      $this->atividade = $val;
     }
 
 

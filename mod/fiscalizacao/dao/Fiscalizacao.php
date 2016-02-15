@@ -27,10 +27,16 @@ class Fiscalizacao extends ProjetoBase
     /** @Column(type="integer") */
     protected $urgencia;
 
+    /**
+    * @OneToMany(targetEntity="Agente", mappedBy="fiscalizacao")
+    * @JoinColumn(name="fk_agentes", referencedColumnName="id", nullable=true)
+    */
+    protected $agentes = null;
+
 
     public function __construct()
     {
-
+        $this->agentes = new ArrayCollection();
     }
 
     public function getId()
@@ -51,6 +57,16 @@ class Fiscalizacao extends ProjetoBase
     public function setUrgencia($val)
     {
       $this->urgencia = $val;
+    }
+
+    public function getAgentes()
+    {
+      return $this->agentes;
+    }
+
+    public function setAgentes($val)
+    {
+      $this->agentes = $val;
     }
 
     

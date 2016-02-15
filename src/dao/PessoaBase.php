@@ -1,5 +1,5 @@
 <?php
-namespace Darth\Core\DAO;
+namespace Darth\Core\dao;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping\Entity;
@@ -10,17 +10,10 @@ use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\OneToMany;
 
 /**
- * @Entity 
- * @Table(name="core__pessoas")
+ * @MappedSuperclass
  */
-class Pessoa
+class PessoaBase
 {
-    /**
-    * @Id @GeneratedValue @Column(type="integer")
-    * @var integer
-    */
-    protected $id;
-
     /**
     * @Column(type="integer")
     */
@@ -33,18 +26,7 @@ class Pessoa
 
     public function __construct()
     {
-        $this->children = new ArrayCollection();
-        $this->atividades = new ArrayCollection();
-    }
-
-    public function getId()
-    {
-      return $this->id;
-    }
-
-    public function setId($id)
-    {
-      $this->id = $id;
+        
     }
 
     public function getMatricula()
@@ -67,12 +49,4 @@ class Pessoa
       $this->nome = $val;
     }
 
-   public function __toString()
-   {
-      return strval("[Class=Pessoa" 
-	 .", id=".$this->getId()
-	 .", Nome=".$this->getNome()
-	 .", Matrícula=".$this->getMatricula()
-	 ."]");
-   }
 }

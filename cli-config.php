@@ -10,11 +10,11 @@ require_once "vendor/autoload.php";
 * sistema para saber onde dar o bootstrap:
 */
 
-$paths = array( __DIR__,
+$paths = array( __DIR__ . "/src/dao/",
         # usar  . DIRECTORY_SEPARATOR . 
-                __DIR__ . "/../../mod/fiscalizacao/dao"
+                __DIR__ . "/mod/fiscalizacao/dao"   #no cli-config é direto, no DAO.php tem que usar "../../mod"
         );    //"./src/dao" , path to Managed Entities
-#$paths = array(__DIR__ . "/src");    // path to Managed Entities
+#$paths = array(__DIR__ . "/src/dao");    // path to Managed Entities
 
 $isDevMode = true;
 

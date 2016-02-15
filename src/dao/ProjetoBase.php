@@ -1,5 +1,5 @@
 <?php
-namespace Darth\Core\DAO;
+namespace Darth\Core\dao;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping\Entity;
@@ -15,12 +15,6 @@ use Doctrine\ORM\Mapping\OneToMany;
 class ProjetoBase
 {
     /**
-    * @Id @GeneratedValue @Column(type="integer")
-    * @var integer
-    */
-    protected $id;
-
-    /**
     * @Column(type="date")
     */
     protected $dataInicio;
@@ -33,37 +27,12 @@ class ProjetoBase
     /** @Column(type="string", length=40) */
     protected $nome;
 
-    /**
-    * @OneToMany(targetEntity="ProjetoBase", mappedBy="parent")
-    */
-    protected $children = null;
-
-    /**
-    * @ManyToOne(targetEntity="ProjetoBase", inversedBy="children")
-    */
-    protected $parent = null;
-
-    /**
-    * @OneToMany(targetEntity="AtividadeBase", mappedBy="projeto")
-    * @JoinColumn(name="fk_atividades", referencedColumnName="id", nullable=true)
-    */
-    protected $atividades = null;
 
     public function __construct()
     {
-        $this->children = new ArrayCollection();
-        $this->atividades = new ArrayCollection();
+        
     }
 
-    public function getId()
-    {
-      return $this->id;
-    }
-
-    public function setId($id)
-    {
-      $this->id = $id;
-    }
 
     public function getDataInicio()
     {
@@ -95,35 +64,5 @@ class ProjetoBase
       $this->nome = $val;
     }
 
-    public function getChildren()
-    {
-      return $this->children;
-    }
-
-    public function setChildren($val)
-    {
-      $this->children[] = $val;
-    }
-
-    public function getParent()
-    {
-      return $this->parent;
-    }
-
-    public function setParent($val)
-    {
-      $this->parent = $val;
-    }
-
-
-    public function getAtividades()
-    {
-      return $this->atividades;
-    }
-
-    public function setAtividades($val)
-    {
-      $this->atividades = $val;
-    }
    
 }

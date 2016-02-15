@@ -1,5 +1,5 @@
 <?php
-namespace Darth\Core\Modules\Fiscalizacao\DAO;
+namespace Darth\Core\Modules\Fiscalizacao\dao;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping\Entity;
@@ -9,12 +9,13 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\OneToMany;
 
-use Darth\Core\DAO\Projeto as Projeto;
+use Darth\Core\DAO\ProjetoBase as ProjetoBase;
+
 /**
  * @Entity 
  * @Table(name="mod_fiscalizacao__fiscalizacoes")
  */
-class Fiscalizacao extends Projeto
+class Fiscalizacao extends ProjetoBase
 {
     /**
     * @Id @GeneratedValue @Column(type="integer")

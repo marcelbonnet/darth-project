@@ -1,7 +1,5 @@
 <?php
-#namespace Darth\Core\Modules\Fiscalizacao;
 namespace Darth\Modules\Fiscalizacao;
-#namespace Acme;
 
 class ControllerBase #extends \Darth\Core\AbstractModulesController
 {
@@ -17,7 +15,7 @@ class ControllerBase #extends \Darth\Core\AbstractModulesController
         #$this->app->get('/mod/fiscalizacao/teste', function () use ($app) {
         #TODO: $app->group("/modules/fiscalizacao") ...
         $app->get('/modules/fiscalizacao/teste', function () use ($app) {
-            \Doctrine\Common\Util\Debug::dump("teste GET");
+            #\Doctrine\Common\Util\Debug::dump("teste GET");
             //TODO setar o template para __DIR__ . /templates
             $params = array("templates" => $app->view->getTemplatesDirectory() );
             $app->render("home.html", $params );

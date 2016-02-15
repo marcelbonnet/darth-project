@@ -86,14 +86,19 @@ $app->group('/projeto', function () use ($app) {
 //carrega controllers dos módulos
 $app->hook('slim.before', function() use ($app, $loader) {
     #
-    # Rotas /mod/... 
+    # Rotas /modules/... 
     # são reservadas para módulos por causa do bootstrap aqui embutido:
-    #
+    #   PADRÃO:
+    #   diretório de módulos:
+    #       [projeto]/mod/[n]ome_modulo
+    #   namespace de módulos:
+    #       Darth\Modules\[N]ome_modulo
+
     #preg_match("@^/Modules/.+$@", $app->request->getPathInfo() , $matches);
     preg_match("@^/modules/.+$@", $app->request->getPathInfo() , $matches);
     if($matches){   #print: [0] => /mod/fiscalizacao
         $nomeModulo = explode("/",$matches[0])[2];
-        
+        $modNamespace = ucfirst($nomeModulo);
         # TESTE 1
         #require_once __DIR__ . $matches[0] . "/ControllerBase.php"; #dá erro nesse include, classe dentro de método hook!
         
@@ -101,8 +106,8 @@ $app->hook('slim.before', function() use ($app, $loader) {
         #$ctrl = new \Darth\Core\Modules\Fiscalizacao\ControllerBase(); #class not found, problema no config do composer?
 
         # TESTE 3
-        $loader->addPsr4("Darth\\Modules\\Fiscalizacao\\", __DIR__ . "/mod/Fiscalizacao");  #funcionou
-        #$loader->addPsr4("Darth\\Modules\\". $nomeModulo ."\\", __DIR__ . "/mod/Fiscalizacao");
+        #$loader->addPsr4("Darth\\Modules\\Fiscalizacao\\", __DIR__ . "/mod/fiscalizacao");  #funcionou
+        $loader->addPsr4("Darth\\Modules\\". $modNamespace ."\\", __DIR__ . "/mod/" . $nomeModulo);
         $ctrl = new Darth\Modules\Fiscalizacao\ControllerBase();
         #$app->render("home.html", array("teste" => $nomeModulo ) );
     }

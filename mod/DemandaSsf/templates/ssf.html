@@ -8,7 +8,22 @@
     <input id="ssfObjetivo" name="ssfObjetivo" placeholder="objetivo"><br>
     <button type="submit">Incluir</button>
 </form>
+
+<h1>Workflow Mod SSF v.1</h1>
+<ol>
+    <li>Incluir SSF</li>
+    <li>GR/UO aprova</li>
+    <li>FIGF aprova</li>
+    <li>Coordenador aprova</li>
+    <li>Mod Fiscalização recebe AFs (uma por entidade) a partir de uma SSF aprovada</li>
+</ol>
+
 <hr>
 {% for s in demandas %}
-    <button type="button" onclick="location.href='{{baseUrl()}}/modules/DemandaSsf/ssf/ssf2af/{{s.id}}'" >Workflow sff2af</button> {{s}}<br>
+    <!--
+        <button type="button" onclick="location.href='{{baseUrl()}}/modules/DemandaSsf/ssf/ssf2af/{{s.id}}'" >Aprovar/Projeto</button>
+    -->
+    
+    {{s}}<br>
 {% endfor %}
+

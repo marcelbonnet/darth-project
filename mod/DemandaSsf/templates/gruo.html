@@ -1,0 +1,10 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<h1>GR/UO</h1>
+
+<p>Aceita a Demanda no GR/UO?</p>
+
+{% for s in demandas %}
+    <button type="button" onclick="location.href='{{baseUrl()}}/modules/DemandaSsf/ssf/gruo/{{s.id}}/1'" >Aprovar</button>
+    <button type="button" onclick="location.href='{{baseUrl()}}/modules/DemandaSsf/ssf/gruo/{{s.id}}/2'" >Reprovar</button>
+    {{s}}<br>
+{% endfor %}

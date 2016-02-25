@@ -32,15 +32,22 @@ class SsfModulo implements ModuloSsfInterface
         //TODO deveria ir num Repository...
         $em = \Darth\Core\dao\DAO::em();
         $demandas = $em->getRepository("Darth\Modules\DemandaSsf\dao\SSF")
-            ->findBy(array(), array("id" => "ASC") );
+            ->findBy(array("okCoordenador" => 1, "okGrUo" => 1, "okFigf" => 1), array("id" => "ASC") );
+        
         $afs = array();
         foreach ($demandas as $demanda){
+            foreach ($demanda->getAcoesFiscalizacao() as $acao){
+                array_push($afs, $acao);
+            }
+            /*
+            //fluxo simplificado com única aprovação:
             //tosqueira para não ter que fazer o Repository na prova de conceito:
             if($demanda->getProjeto()->getStatus() == 2){
                 foreach ($demanda->getAcoesFiscalizacao() as $acao){
                     array_push($afs, $acao);
                 }
             }
+            */
         }
         return $afs;
     }

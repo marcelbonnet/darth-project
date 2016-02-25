@@ -57,6 +57,51 @@ class ControllerBase #extends \Darth\Core\AbstractModulesController
                     $em->persist($ssf);
                     $em->flush();
                 });
+               $app->get('/coordenador', function () use ($app) {
+                    //TODO deveria ir num Repository...
+                    $em = \Darth\Core\dao\DAO::em();
+                    $demandas = $em->getRepository("Darth\Modules\DemandaSsf\dao\SSF")
+                        ->findBy(array("okCoordenador" => 0, "okGrUo" => 1, "okFigf" => 1), array("id" => "ASC") );
+                    $params = array("demandas" => $demandas);
+                    $app->render("coordenador.html", $params);
+                });
+               $app->get('/gruo', function () use ($app) {
+                    //TODO deveria ir num Repository...
+                    $em = \Darth\Core\dao\DAO::em();
+                    $demandas = $em->getRepository("Darth\Modules\DemandaSsf\dao\SSF")
+                        ->findBy(array("okCoordenador" => 0, "okGrUo" => 0, "okFigf" => 0), array("id" => "ASC") );
+                    $params = array("demandas" => $demandas);
+                    $app->render("gruo.html", $params);
+                });
+               $app->get('/figf', function () use ($app) {
+                    //TODO deveria ir num Repository...
+                    $em = \Darth\Core\dao\DAO::em();
+                    $demandas = $em->getRepository("Darth\Modules\DemandaSsf\dao\SSF")
+                        ->findBy(array("okCoordenador" => 0, "okGrUo" => 1, "okFigf" => 0), array("id" => "ASC") );
+                    $params = array("demandas" => $demandas);
+                    $app->render("figf.html", $params);
+                });
+               $app->get('/coordenador/:ssfId/:status', function ($ssfId, $status) use ($app) {
+                    $em = \Darth\Core\dao\DAO::em();
+                    $ssf = $em->find("Darth\Modules\DemandaSsf\dao\SSF", $ssfId);
+                    $ssf->setOkCoordenador($status);
+                    $em->persist($ssf);
+                    $em->flush();
+                });
+               $app->get('/gruo/:ssfId/:status', function ($ssfId, $status) use ($app) {
+                    $em = \Darth\Core\dao\DAO::em();
+                    $ssf = $em->find("Darth\Modules\DemandaSsf\dao\SSF", $ssfId);
+                    $ssf->setOkGrUo($status);
+                    $em->persist($ssf);
+                    $em->flush();
+                });
+               $app->get('/figf/:ssfId/:status', function ($ssfId, $status) use ($app) {
+                    $em = \Darth\Core\dao\DAO::em();
+                    $ssf = $em->find("Darth\Modules\DemandaSsf\dao\SSF", $ssfId);
+                    $ssf->setOkFigf($status);
+                    $em->persist($ssf);
+                    $em->flush();
+                });
             });
         });
     }

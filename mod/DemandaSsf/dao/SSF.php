@@ -40,6 +40,23 @@ class SSF
     */
     protected $acoesFiscalizacao;
 
+    //simular SSF workflow #1
+
+    /**
+     * @Column(type="smallint")
+    */
+    protected $okCoordenador = 0;
+
+    /**
+     * @Column(type="smallint")
+    */
+    protected $okFigf = 0;
+
+    /**
+     * @Column(type="smallint")
+    */
+    protected $okGrUo = 0;
+
 
     public function __construct()
     {
@@ -89,6 +106,48 @@ class SSF
         $this->acoesFiscalizacao=$acoesFiscalizacao;
     }  
     
+    /**
+    * getter auto gerado
+    * @return okCoordenador 
+    */
+    public function getOkCoordenador() {
+        return $this->okCoordenador;
+    }
+    /**
+    * setter auto gerado
+    * @param okCoordenador 
+    */
+    public function setOkCoordenador($okCoordenador) {
+        $this->okCoordenador=$okCoordenador;
+    }
+    /**
+    * getter auto gerado
+    * @return okFigf 
+    */
+    public function getOkFigf() {
+        return $this->okFigf;
+    }
+    /**
+    * setter auto gerado
+    * @param okFigf 
+    */
+    public function setOkFigf($okFigf) {
+        $this->okFigf=$okFigf;
+    }
+    /**
+    * getter auto gerado
+    * @return okGrUo 
+    */
+    public function getOkGrUo() {
+        return $this->okGrUo;
+    }
+    /**
+    * setter auto gerado
+    * @param okGrUo 
+    */
+    public function setOkGrUo($okGrUo) {
+        $this->okGrUo=$okGrUo;
+    }
 
     public function __toString()
     {
@@ -98,6 +157,28 @@ class SSF
      .", Fim=".$this->getProjeto()->getDataFim()->format("d/m/Y")
      .", Objetivo=".$this->getProjeto()->getDescricao()
      .", Status=".$this->getProjeto()->getStatus()
+     .", OkCoordenador=". $this->_okLabel($this->getOkCoordenador())
+     .", OkGrUo=".$this->_okLabel($this->getOkGrUo())
+     .", OkFigf=".$this->_okLabel($this->getOkFigf())
      ."]");
+    }
+
+    private function _okLabel($num)
+    {
+        switch ($num) {
+            case 0;
+                return "Pendente de Análise";
+            break;
+            case 1;
+                return "Aprovada";
+            break;
+            case 2;
+                return "Reprovada";
+            break;
+            default :
+                return $num;
+            break;
+        }
+        
     }
 }

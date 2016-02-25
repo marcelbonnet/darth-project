@@ -5,12 +5,14 @@
         "slim/views": "0.1.3",
         "twig/twig": "1.18",
         "doctrine/orm" : "2.5",
-        "beberlei/DoctrineExtensions": "^1.0"
+        "beberlei/DoctrineExtensions": "^1.0",
+        "tuupola/slim-basic-auth": "1.0.0",
+        "tuupola/slim-jwt-auth": "1.0.1"
     }
    ,"autoload": {
         "psr-4": {
 	    "Darth\\Core\\": "src",
-	    "Darth\\Modules\\": "src/mod",
+	    "Darth\\Modules\\": "mod",
 	    "Darth\\Core\\Annotations\\": "src/annotations",
 	    "Darth\\Core\\Cmd\\": "src/cmd"
         }

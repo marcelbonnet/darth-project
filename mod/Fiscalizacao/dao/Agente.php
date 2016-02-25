@@ -1,5 +1,4 @@
 <?php
-#namespace Darth\Core\Modules\Fiscalizacao\dao;
 namespace Darth\Modules\Fiscalizacao\dao;
 
 #use Darth\Core\dao\PessoaBase as PessoaBase;

@@ -9,3 +9,9 @@ cli-config.php
 
 src/dao/DAO.pho
    $isDevMode = true;	#mudar para false em produção
+
+Enable	 Zend  OPcache : ativar na compilação para o server de produção. 
+   php.ini  zend_extension=/path/to/opcache.so
+   o caminho pode ser obtido com: $ php-config	--extension-dir
+   **COM Xebug: carregar o opcache antes da linha que habilita o Xdebug
+   Vide config do Zend OPcache no Modern PHP, pg. 48 e no Chapter 8.

@@ -1,5 +1,7 @@
 TROCAR dao por DAO no namespace?
 
+www/zend-framework
+composer require jeremykendall/slim-auth
 
 BOOTSTRAP DE MOD:
 

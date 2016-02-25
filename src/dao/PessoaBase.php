@@ -22,7 +22,6 @@ class PessoaBase
     /** @Column(type="string", length=255) */
     protected $nome;
 
-    
 
     public function __construct()
     {

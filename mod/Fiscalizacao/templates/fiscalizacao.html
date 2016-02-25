@@ -1,13 +1,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
-<h1>Fiscalizações</h1>
+<h1>Fiscalizações - AFs</h1>
 
-<form action="{{baseUrl()}}/modules/fiscalizacao/fiscalizacao/add" method="POST">
+<form action="{{baseUrl()}}/modules/Fiscalizacao/fiscalizacao/add" method="POST">
     <input id="inicio" name="inicio" placeholder="Início"><br>
     <input id="fim" name="fim" placeholder="Fim"><br>
     <input id="nome" name="nome" placeholder="Nome do Projeto"><br>
     <button type="submit">Incluir</button>
 </form>
 <hr>
-{% for projeto in projetos %}
-    {{projeto}}<br>
+
+<p>Origem: Mod SSF</p>
+{% for af in afs %}
+    {{af}}<br>
 {% endfor %}
+<p>Origem: Mod FOCUS</p>

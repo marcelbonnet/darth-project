@@ -5,3 +5,5 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 #RewriteRule ^(/shotnet2/index\.php/(.+))$ $1?/$2 [L,NC,QSA]
 RewriteRule . /darth-project/index.php [L]
+#slim-jwt-auth:
+RewriteRule .* - [env=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

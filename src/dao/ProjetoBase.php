@@ -27,6 +27,23 @@ class ProjetoBase
     /** @Column(type="string", length=40) */
     protected $nome;
 
+    /** @Column(type="text", nullable=true) */
+    protected $descricao;
+
+    /**
+    * Status gerais do projeto, trocar por um Enum? 
+    * 0 Não Definido, 
+    * 1 Em Planejamento, 
+    * 2 Proposto, 
+    * 3 Em Execução, 
+    * 4 Parado, 
+    * 5 Concluído, 
+    * 6 Arquivado, 
+    * 7 Modelo
+    * @Column(type="smallint")
+    */
+    protected $status = 0;
+
 
     public function __construct()
     {
@@ -64,5 +81,29 @@ class ProjetoBase
       $this->nome = $val;
     }
 
+    public function getStatus()
+    {
+      return $this->status;
+    }
+
+    public function setStatus($val)
+    {
+      $this->status = $val;
+    }
+
+    /**
+    * getter auto gerado
+    * @return descricao 
+    */
+    public function getDescricao() {
+        return $this->descricao;
+    }
+    /**
+    * setter auto gerado
+    * @param descricao 
+    */
+    public function setDescricao($descricao) {
+        $this->descricao=$descricao;
+    }
    
 }

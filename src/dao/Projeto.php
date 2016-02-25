@@ -27,7 +27,6 @@ class Projeto extends ProjetoBase
 
     /**
     * @OneToMany(targetEntity="Atividade", mappedBy="projeto")
-    * @JoinColumn(name="fk_atividades", referencedColumnName="id", nullable=true)
     */
     protected $atividades = null;
 
@@ -85,6 +84,7 @@ class Projeto extends ProjetoBase
 	 .", Nome=".$this->getNome()
 	 .", Início=".$this->getDataInicio()->format("d/m/Y")
 	 .", Fim=".$this->getDataFim()->format("d/m/Y")
+	 .", Status=".$this->getStatus()
 	 ."]");
    }
 }

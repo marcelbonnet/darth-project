@@ -1,0 +1,28 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<h1>Módulos</h1>
+
+
+
+{% for modulo in modulos %}
+    {% if modulo.isLigado %}
+        {% set estado="LIGADO" %}
+    {% else %}
+        {% set estado="DESLIGADO" %}
+    {% endif %}
+    <!--
+    <button type="button" onclick="{{baseUrl()}}/admin/modules/{{modulo.nome}}/" >Alternar Estado</button>
+    -->
+    <strong>{{modulo.nome}}</strong> {{estado}}
+    <br>
+{% endfor %}
+
+
+<!--
+<hr>
+<p>outro teste com twig:</p>
+<ul>
+{% for prop, value in modulos %}
+    <li>{{prop}} {{value.nome}} {{value.isLigado}}</li>
+{% endfor %}
+</ul>
+-->

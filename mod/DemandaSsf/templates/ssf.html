@@ -1,0 +1,14 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<h1>SSFs</h1>
+
+<form action="{{baseUrl()}}/modules/DemandaSsf/ssf/add" method="POST">
+    Solicitante: {{username}}<br>
+    <input id="inicio" name="inicio" placeholder="Início"><br>
+    <input id="fim" name="fim" placeholder="Fim"><br>
+    <input id="ssfObjetivo" name="ssfObjetivo" placeholder="objetivo"><br>
+    <button type="submit">Incluir</button>
+</form>
+<hr>
+{% for s in demandas %}
+    <button type="button" onclick="location.href='{{baseUrl()}}/modules/DemandaSsf/ssf/ssf2af/{{s.id}}'" >Workflow sff2af</button> {{s}}<br>
+{% endfor %}

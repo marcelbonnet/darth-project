@@ -30,6 +30,7 @@ class Atividade extends AtividadeBase
 
     /**
     * @ManyToOne(targetEntity="Projeto", inversedBy="atividades")
+    * @JoinColumn(name="fk_atividades", referencedColumnName="id", nullable=true)
     */
     protected $projeto = null;
 

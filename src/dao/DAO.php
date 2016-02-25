@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManager;
 
 class DAO
 {
-   public static function em()
+    public static function em()
     {
         /* ao carregar novo ou mudar staus de um módulo
         * registrar isso numa classe/tabela core-modules do

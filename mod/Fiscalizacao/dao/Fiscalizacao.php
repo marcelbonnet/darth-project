@@ -16,7 +16,7 @@ use Darth\Core\dao\ProjetoBase as ProjetoBase;
  * @Entity 
  * @Table(name="mod_fiscalizacao__fiscalizacoes")
  */
-class Fiscalizacao extends ProjetoBase
+class Fiscalizacao #extends ProjetoBase #se herdar os atributos de ProjetoBase são criados nesta entidade. Se usar OneToOne, a entidade Projeto sempre existirá e será completada com esta entidade usando-se um OneToOne
 {
     /**
     * @Id @GeneratedValue @Column(type="integer")
@@ -34,6 +34,11 @@ class Fiscalizacao extends ProjetoBase
     */
     protected $agentes = null;
 
+    /**
+    * @OneToOne(targetEntity="Darth\Core\dao\Projeto",cascade={"persist"})
+    * @JoinColumn(name="fk_projeto", referencedColumnName="id", nullable=false)
+    */
+    protected $projeto = null;
 
     public function __construct()
     {
@@ -70,15 +75,23 @@ class Fiscalizacao extends ProjetoBase
       $this->agentes = $val;
     }
 
+    public function getProjeto()
+    {
+      return $this->projeto;
+    }
+
+    public function setProjeto($val)
+    {
+      $this->projeto = $val;
+    }
     
    public function __toString()
    {
       return strval("[Class=Fiscalizacao" 
 	 .", id=".$this->getId()
-	 .", Nome=".$this->getNome()
-	 .", Início=".$this->getDataInicio()
-	 .", Fim=".$this->getDataFim()
 	 .", Urgência=".$this->getUrgencia()
+	 .", Agentes=".$this->getAgentes()
+	 .", Projeto=".$this->getProjeto()
 	 ."]");
    }
 }

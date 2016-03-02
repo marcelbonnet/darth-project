@@ -1,7 +1,7 @@
 <?php
 namespace Darth\Core\mod;
 
-interface ModuloInterface 
+interface ModuloInterface extends ModuloEvent
 {
     public static function getNome();
     //getVersao();

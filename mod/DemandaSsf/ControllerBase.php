@@ -85,6 +85,7 @@ class ControllerBase #extends \Darth\Core\AbstractModulesController
                     $em = \Darth\Core\dao\DAO::em();
                     $ssf = $em->find("Darth\Modules\DemandaSsf\dao\SSF", $ssfId);
                     $ssf->setOkCoordenador($status);
+                    $ssf->getProjeto()->setStatus($status);   //só para lembrar de manter integridade com o Core
                     $em->persist($ssf);
                     $em->flush();
                 });
@@ -92,6 +93,7 @@ class ControllerBase #extends \Darth\Core\AbstractModulesController
                     $em = \Darth\Core\dao\DAO::em();
                     $ssf = $em->find("Darth\Modules\DemandaSsf\dao\SSF", $ssfId);
                     $ssf->setOkGrUo($status);
+                    $ssf->getProjeto()->setStatus($status);   //só para lembrar de manter integridade com o Core
                     $em->persist($ssf);
                     $em->flush();
                 });
@@ -99,6 +101,7 @@ class ControllerBase #extends \Darth\Core\AbstractModulesController
                     $em = \Darth\Core\dao\DAO::em();
                     $ssf = $em->find("Darth\Modules\DemandaSsf\dao\SSF", $ssfId);
                     $ssf->setOkFigf($status);
+                    $ssf->getProjeto()->setStatus($status);   //só para lembrar de manter integridade com o Core
                     $em->persist($ssf);
                     $em->flush();
                 });

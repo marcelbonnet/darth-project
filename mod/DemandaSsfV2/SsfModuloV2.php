@@ -1,11 +1,11 @@
 <?php
-namespace Darth\Modules\DemandaSsf;
+namespace Darth\Modules\DemandaSsfV2;
 
 use Darth\Modules\Fiscalizacao\Mod\ModuloSsfInterface;
 
-class SsfModulo implements ModuloSsfInterface
+class SsfModuloV2 implements ModuloSsfInterface
 {
-    protected static $nomeModulo = "DemandaSsf";
+    protected static $nomeModulo = "DemandaSsfV2";
 
     public static function getNome()
     {

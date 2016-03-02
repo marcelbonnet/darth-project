@@ -1,0 +1,10 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<h1>Coordenador</h1>
+
+<p>Temos condições de executar como proposto?</p>
+
+{% for s in demandas %}
+    <button type="button" onclick="location.href='{{baseUrl()}}/modules/DemandaSsf/ssf/coordenador/{{s.id}}/1'" >Aprovar</button>
+    <button type="button" onclick="location.href='{{baseUrl()}}/modules/DemandaSsf/ssf/coordenador/{{s.id}}/2'" >Reprovar</button>
+    {{s}}<br>
+{% endfor %}

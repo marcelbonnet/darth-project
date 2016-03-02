@@ -1,0 +1,27 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<h1>SSFs v.2</h1>
+
+<form action="{{baseUrl()}}/modules/DemandaSsfV2/ssf/add" method="POST">
+    Solicitante: {{username}}<br>
+    <input id="inicio" name="inicio" placeholder="Início"><br>
+    <input id="fim" name="fim" placeholder="Fim"><br>
+    <input id="ssfObjetivo" name="ssfObjetivo" placeholder="objetivo"><br>
+    <button type="submit">Incluir</button>
+</form>
+
+<h1>Workflow Mod SSF <strong>v.2</strong></h1>
+<ol>
+    <li>Incluir SSF</li>
+    <li>Qualquer um Aprovar</li>
+    <li>Deve listar as que não completaram o fluxo de aprovação na vigência da v.1, pois passarão para a nova regra de negócio.</li>
+</ol>
+
+<hr>
+{% for s in demandas %}
+    <!--
+        <button type="button" onclick="location.href='{{baseUrl()}}/modules/DemandaSsf/ssf/ssf2af/{{s.id}}'" >Aprovar/Projeto</button>
+    -->
+    
+    {{s}}<br>
+{% endfor %}
+

@@ -18,6 +18,12 @@ $loader = require_once 'vendor/autoload.php';
 session_cache_limiter(false);
 session_start();
 
+//	Setup	Whoops	error	and	exception	handlers
+$whoops	=	new	\Whoops\Run();
+$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler());
+$whoops->register();
+
+
 $app = new \Slim\Slim(array(
     'view' => new \Slim\Views\Twig()
 ));
@@ -25,7 +31,7 @@ $app = new \Slim\Slim(array(
 $app->add(new \Slim\Middleware\HttpBasicAuthentication([
     "path" => "/",
     "realm" => "Darth Project",
-    "secure" => true,
+    "secure" => false,  #para poder acessar pela rede!
     "relaxed" => ["localhost", "marcelbonnet.org"],
     "users" => [
         "root" => "toor",
